@@ -21,12 +21,10 @@ move_left(puzzle *pz){
 int *p=malloc(4);
 for(*pz->i=0;*pz->i<*pz->n;(*pz->i)++)
 for(*pz->j=0;*pz->j<*pz->n;(*pz->j)++)
-*(pz->temp+*pz->i**pz->n+*pz->j)=*(pz->a+*pz-
->i**pz->n+*pz->j);
+*(pz->temp+*pz->i**pz->n+*pz->j)=*(pz->a+*pz->i**pz->n+*pz->j);
 if(*pz->y!=0){
 *p=*(pz->temp+*pz->x**pz->n+*pz->y);
-*(pz->temp+*pz->x**pz->n+*pz->y)=*(pz->temp+(*pz-
->x)**pz->n+(*pz->y-1));
+*(pz->temp+*pz->x**pz->n+*pz->y)=*(pz->temp+(*pz->x)**pz->n+(*pz->y-1));
 *(pz->temp+(*pz->x)**pz->n+(*pz->y-1))=*p;
 }
 pz->m=cal(pz->temp,pz->t,pz->m,pz->n);
@@ -35,20 +33,17 @@ if(*pz->dmin<*pz->d){
 *pz->d=*pz->dmin;
 for(*pz->i=0;*pz->i<*pz->n;(*pz->i)++)
 for(*pz->j=0;*pz->j<*pz->n;(*pz->j)++)
-*(pz->r+*pz->i**pz->n+*pz->j)=*(pz->temp+*pz->i**pz-
->n+*pz->j);
+*(pz->r+*pz->i**pz->n+*pz->j)=*(pz->temp+*pz->i**pz->n+*pz->j);
 }
 }
 move_right(puzzle *pz){
 int *p=malloc(4);
 for(*pz->i=0;*pz->i<*pz->n;(*pz->i)++)
 for(*pz->j=0;*pz->j<*pz->n;(*pz->j)++)
-*(pz->temp+*pz->i**pz->n+*pz->j)=*(pz->a+*pz-
->i**pz->n+*pz->j);
+*(pz->temp+*pz->i**pz->n+*pz->j)=*(pz->a+*pz->i**pz->n+*pz->j);
 if(*pz->y!=*pz->n-1){
 *p=*(pz->temp+*pz->x**pz->n+*pz->y);
-*(pz->temp+*pz->x**pz->n+*pz->y)=*(pz->temp+(*pz-
->x)**pz->n+(*pz->y+1));
+*(pz->temp+*pz->x**pz->n+*pz->y)=*(pz->temp+(*pz->x)**pz->n+(*pz->y+1));
 *(pz->temp+(*pz->x)**pz->n+(*pz->y+1))=*p;
 }
 pz->m=cal(pz->temp,pz->t,pz->m,pz->n);
@@ -57,16 +52,14 @@ if(*pz->dmin<*pz->d){
 *pz->d=*pz->dmin;
 for(*pz->i=0;*pz->i<*pz->n;(*pz->i)++)
 for(*pz->j=0;*pz->j<*pz->n;(*pz->j)++)
-*(pz->r+*pz->i**pz->n+*pz->j)=*(pz->temp+*pz->i**pz-
->n+*pz->j);
+*(pz->r+*pz->i**pz->n+*pz->j)=*(pz->temp+*pz->i**pz->n+*pz->j);
 }
 }
 move_up(puzzle *pz){
 int *p=malloc(4);
 for(*pz->i=0;*pz->i<*pz->n;(*pz->i)++)
 for(*pz->j=0;*pz->j<*pz->n;(*pz->j)++)
-*(pz->temp+*pz->i**pz->n+*pz->j)=*(pz->a+*pz-
->i**pz->n+*pz->j);
+*(pz->temp+*pz->i**pz->n+*pz->j)=*(pz->a+*pz->i**pz->n+*pz->j);
 if(*pz->x!=0){
 *p=*(pz->temp+*pz->x**pz->n+*pz->y);
 *(pz->temp+*pz->x**pz->n+*pz->y)=*(pz->temp+(*pz->x1)**pz->n+*pz->y);
@@ -78,20 +71,17 @@ if(*pz->dmin<*pz->d){
 *pz->d=*pz->dmin;
 for(*pz->i=0;*pz->i<*pz->n;(*pz->i)++)
 for(*pz->j=0;*pz->j<*pz->n;(*pz->j)++)
-*(pz->r+*pz->i**pz->n+*pz->j)=*(pz->temp+*pz->i**pz-
->n+*pz->j);
+*(pz->r+*pz->i**pz->n+*pz->j)=*(pz->temp+*pz->i**pz->n+*pz->j);
 }
 }
 move_down(puzzle *pz){
 int *p=malloc(4);
 for(*pz->i=0;*pz->i<*pz->n;(*pz->i)++)
 for(*pz->j=0;*pz->j<*pz->n;(*pz->j)++)
-*(pz->temp+*pz->i**pz->n+*pz->j)=*(pz->a+*pz-
->i**pz->n+*pz->j);
+*(pz->temp+*pz->i**pz->n+*pz->j)=*(pz->a+*pz->i**pz->n+*pz->j);
 if(*pz->x!=*pz->n-1){
 *p=*(pz->temp+*pz->x**pz->n+*pz->y);
-*(pz->temp+*pz->x**pz->n+*pz->y)=*(pz->temp+(*pz-
->x+1)**pz->n+*pz->y);
+*(pz->temp+*pz->x**pz->n+*pz->y)=*(pz->temp+(*pz->x+1)**pz->n+*pz->y);
 *(pz->temp+(*pz->x+1)**pz->n+*pz->y)=*p;
 }
 pz->m=cal(pz->temp,pz->t,pz->m,pz->n);
@@ -100,8 +90,7 @@ if(*pz->dmin<*pz->d){
 *pz->d=*pz->dmin;
 for(*pz->i=0;*pz->i<*pz->n;(*pz->i)++)
 for(*pz->j=0;*pz->j<*pz->n;(*pz->j)++)
-*(pz->r+*pz->i**pz->n+*pz->j)=*(pz->temp+*pz->i**pz-
->n+*pz->j);
+*(pz->r+*pz->i**pz->n+*pz->j)=*(pz->temp+*pz->i**pz->n+*pz->j);
 }
 }
 main(){
@@ -231,8 +220,7 @@ printf("\n");
 }
 for(*pz->i=0;*pz->i<*pz->n;(*pz->i)++)
 for(*pz->j=0;*pz->j<*pz->n;(*pz->j)++){
- *(pz->a+*pz->i**pz->n+*pz->j)=*(pz->r+*pz->i**pz->n+*pz-
->j);
+ *(pz->a+*pz->i**pz->n+*pz->j)=*(pz->r+*pz->i**pz->n+*pz->j);
  *(pz->temp+*pz->i**pz->n+*pz->j)=0;
 }
 printf("Minimum cost : %d\n",*pz->d);
