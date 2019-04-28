@@ -1,83 +1,89 @@
 #include<stdio.h>
-#include<stdlib.h>
-float *weight=NULL;
-float *profit=NULL;//since initialization outside the function(i.e for
-GLOBAL) not allowed;
-void swap(float *x,float *y){
-float t;
-t=*x;
-*x=*y;
-*y=t;
+
+#define MAX 200
+int n, m; //global variables
+int c[MAX];
+void selection_sort(int *b);
+void insertion_sort(int *a);
+int *bubble_sort(int *b, int *a);
+void swap(int *x, int *y) {
+    int t;
+    t = *x;
+    *x = *y;
+    *y = t;
 }
-void print_array(float *x,int n){
-printf("\n");
-for(int i=0;i<n;i++)
-printf("%f ",x[i]);
-printf("\n");
+void print_array(int *d) {
+    int i;
+    printf("\n");
+    for (i = 0; i < n + m; i++) {
+        printf("%d ", d[i]);
+    }
+    printf("\n");
 }
-void quicksort(float *x,int first,int last){
-int pivot,i,j;
-float t;
-if(first<last){
-pivot=first;
-i=first;
-j=last;
-while(i<j){
-while(x[i]>=x[pivot]&&i<last)
-i++;
-while(x[j]<x[pivot])
-j--;
-if(i<j){
-swap(&x[i],&x[j]);
-swap(&weight[i],&weight[j]);
-swap(&profit[i],&profit[j]);
+void selection_sort(int *b) {
+        //m
+        int i, j, pos;
+        printf("\nEnter number of elements for first half = ");
+        scanf("%d", &m); 
+        printf("\nEnter elements for First half array: \n ");
+        for (i = 0; i < m; i++) {
+            scanf("%d", &b[i]);
+            // printf("\n%d",b[i]);
+        }
+        for (i = 0; i < m - 1; i++) {
+            pos = i;
+            for (j = i + 1; j < m; j++) {
+                if (b[pos] > b[j]) {
+                    pos = j;
+                }
+            }
+            if (pos != i) { //That means pos has changed
+                swap( &b[pos], &b[i]);
+            }
+        }
 }
+void insertion_sort(int *a) {
+    //n
+    int i, j;
+    printf("\nEnter number of elements = ");
+    scanf("%d", &n);
+    printf("\nEnter elements for Second array: \n ");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+    }
+    for (i = 1; i <= n - 1; i++) {
+        j = i;
+        while (j > 0 &&a[j - 1] > a[j]) {
+            swap( &a[j], &a[j - 1]);
+            j--;
+        }
+    }
 }
-swap(&x[pivot],&x[j]);
-swap(&weight[pivot],&weight[j]);
-swap(&profit[pivot],&profit[j]);
-quicksort(x,first,j-1);
-quicksort(x,j+1,last);
+int *bubble_sort(int *b, int *a) {
+    int i, j, k = 0;
+    for (i = 0; i < m; i++) {
+        c[k++] = b[i];
+    }
+    for (i = 0; i < n; i++) {
+        c[k++] = a[i];
+    }
+    for (i = 0; i < n + m - 1; i++) {
+        for (j = 0; j < n + m - 1 - i; j++) {
+            if (c[j] > c[j + 1]) {
+                swap( &c[j], &c[j + 1]);
+            }
+        }
+    }
+    return (c);
 }
-}
-void knapsack(int n,float capacity){
-float *x=(float*)malloc(20*sizeof(float)), tp = 0;
-int i, j, u;
-u=capacity;
-for (i=0;i<n;i++)
- x[i]=0.0;
-for (i=0;i<n;i++)
- if(weight[i]>u)
- break;
- else {
- x[i]=1.0;
- tp=tp+profit[i];
- u=u-weight[i];
- }
-if(i<n)
- x[i]=u/weight[i];
-tp=tp+(x[i]*profit[i]);
-printf("\nThe result vector is:");
- print_array(x,n);
-printf("\nMaximum profit is = %f\n",tp);
-}
-int main(void){
-float capacity,*ratio=(float*)malloc(sizeof(float)*20),temp;
-weight=(float*)malloc(20*sizeof(float));
-profit=(float*)malloc(20*sizeof(float));
- int n;
- printf("\nEnter the no. of objects = ");
- scanf("%d", &n);
-printf("Enter the wts and profits of each object:\n");
- for (int i=0;i<n;i++)
- scanf("%f%f",&weight[i],&profit[i]);
-printf("\nEnter the capacity of knapsack = ");
- scanf("%f",&capacity);
-for (int i=0;i<n;i++)
- ratio[i]=profit[i]/weight[i];
-quicksort(ratio,0,n-1);
- knapsack(n,capacity);
- return(0);
+int main(void) {
+    int a[100], b[100], *ans, i;
+    selection_sort(b);
+    insertion_sort(a);
+    ans = bubble_sort(b, a);
+    printf("\nThe Sorted Array is : \n");
+    print_array(ans);
+    return (0);
 }
 /*
 OUTPUT:
